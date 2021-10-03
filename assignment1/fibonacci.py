@@ -15,7 +15,7 @@ def fibonnaci(n):
     Calculate the nth number of the Fibonacci sequence.
 
     :param n: position in the sequence in which to calculate.
-    :return: int: nth number of the sequence.
+    :return: int: how many numbers in the sequence to calculate.
     :raises: TypeError: if n is not an integer
     :raises: ValueError: if n < 0
     """
@@ -30,7 +30,7 @@ def fibonnaci(n):
             Fn1, Fn2 = Fn, Fn1
         return Fn
     else:
-        raise ValueError('Fibonnaci is defined only for n > 0.')
+        raise ValueError('Fibonnaci is defined only for n >= 0.')
 
 
 def main():

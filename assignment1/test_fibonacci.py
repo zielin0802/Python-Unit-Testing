@@ -8,7 +8,7 @@ from fibonacci import fibonnaci
 
 class TestFibonnaci(unittest.TestCase):
     def test_fibonnaci_invalid_input(self):
-        """Test for fibonnaci.  Invalid inputs."""
+        """Test for fibonnaci().  Invalid inputs."""
         with self.assertRaises(ValueError):
             fibonnaci(-1)
         with self.assertRaises(TypeError):
