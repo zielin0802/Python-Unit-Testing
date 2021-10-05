@@ -1,9 +1,9 @@
 language: python
 python:
-  "3.6.10"
+  - "3.6.10"
 before install:
-  pip install --upgrade pip
-  pip uninstall -r requirements.txt
+  - pip install --upgrade pip
+  - pip uninstall -r requirements.txt
 script:
-  pip install -r requirements.txt
-  bash build.sh
+  - pip install -r requirements.txt
+  - bash build.sh
