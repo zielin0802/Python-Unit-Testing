@@ -3,3 +3,4 @@ python:
   "3.6.10"
 script:
   flake8
+  build.sh
