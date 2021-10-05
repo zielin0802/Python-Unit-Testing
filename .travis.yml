@@ -3,7 +3,7 @@ python:
   - "3.6.10"
 before install:
   - pip install --upgrade pip
-  - pip uninstall -r requirements.txt
+  - pip uninstall -r requirements.txt -y
 script:
   - pip install -r requirements.txt
   - bash build.sh
