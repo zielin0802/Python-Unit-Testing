@@ -10,7 +10,7 @@ from argparse import ArgumentParser
 import sys
 
 
-def fibonnaci(n):
+def fibonnaci( n):
     """
     Calculate the nth number of the Fibonacci sequence.
 
