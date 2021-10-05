@@ -33,6 +33,7 @@ class TestFibonnaci(unittest.TestCase):
         self.assertEqual(fibonnaci(10), 55)
         self.assertEqual(fibonnaci(11), 89)
         self.assertEqual(fibonnaci(12), 144)
+        self.assertEqual(fibonnaci(13), 233)
 
 
 if __name__ == '__main__':
