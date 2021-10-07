@@ -1,18 +1,34 @@
 """
-Script to calculate and print fibonacci sequence.  Defaulting to first 10.
-
-Sample usage:
-python fibonacci.py
-python fibonacci.py -n 20
+Module to calculate Fibonacci to nth number in sequence.
 """
 
-from argparse import ArgumentParser
-import sys
 
-
-def fibonnaci(n):
+def fibonacci(n):
     """
     Calculate the nth number of the Fibonacci sequence.
+
+    Examples:
+    >>> fibonacci(0)
+    0
+
+    >>> fibonacci(1)
+    1
+
+    >>> fibonacci(9)
+    34
+
+    >>> [fibonacci(x) for x in range(10)]
+    [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+    >>> fibonacci(-1)
+    Traceback (most recent call last):
+    ...
+    ValueError: Fibonacci is defined only for n >= 0.
+
+    >>> fibonacci('5')
+    Traceback (most recent call last):
+    ...
+    TypeError: Fibonacci is defined only for type int.
 
     :param n: position in the sequence in which to calculate.
     :return: int: how many numbers in the sequence to calculate.
@@ -30,20 +46,9 @@ def fibonnaci(n):
             Fn1, Fn2 = Fn, Fn1
         return Fn
     else:
-        raise ValueError('Fibonnaci is defined only for n >= 0.')
-
-
-def main():
-    parser = ArgumentParser()
-    parser.add_argument('-n', '--n', type=int, required=False, default=10)
-    args = parser.parse_args()
-
-    fibonnaci_numbers = [fibonnaci(x) for x in range(args.n)]
-    fibonnaci_sequence = ', '.join([str(f) for f in fibonnaci_numbers])
-    print(fibonnaci_sequence)
-
-    return 0
+        raise ValueError('Fibonacci is defined only for n >= 0.')
 
 
 if __name__ == '__main__':
-    sys.exit(main())
+    from doctest import testmod
+    testmod()
