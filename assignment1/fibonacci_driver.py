@@ -2,13 +2,13 @@
 Script to calculate and print fibonacci sequence.  Defaulting to first 10.
 
 Sample usage:
-python fibonacci.py
-python fibonacci.py -n 20
+python fibonacci_driver.py
+python fibonacci_driver.py -n 20
 """
 
 from argparse import ArgumentParser
 import sys
-from fibonacci import fibonacci
+from fibonacci import fibonacci, fibonacci_sequence
 
 
 def main():
@@ -16,9 +16,7 @@ def main():
     parser.add_argument('-n', '--n', type=int, required=False, default=10)
     args = parser.parse_args()
 
-    fibonnaci_numbers = [fibonacci(x) for x in range(args.n)]
-    fibonnaci_sequence = ', '.join([str(f) for f in fibonnaci_numbers])
-    print(fibonnaci_sequence)
+    s = fibonacci_sequence(args.n - 1)
 
     return 0
 

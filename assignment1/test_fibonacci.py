@@ -12,7 +12,7 @@ class Testfibonacci(unittest.TestCase):
         with self.assertRaises(ValueError):
             fibonacci(-1)
         with self.assertRaises(TypeError):
-            fibonacci('1')
+            fibonacci('Lateralus')
         with self.assertRaises(TypeError):
             fibonacci(None)
         with self.assertRaises(TypeError):
