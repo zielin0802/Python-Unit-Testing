@@ -3,3 +3,5 @@ flake8
 echo 'Running unit tests...'
 python assignment1/test_fibonacci.py
 python assignment1/test_volume.py
+echo 'Running doctest...'
+python assignment1/fibonacci.py

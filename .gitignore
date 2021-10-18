@@ -131,3 +131,5 @@ dmypy.json
 .vscode/settings.json
 activate_venv.sh
 .DS_Store
+.idea
+.tmp.driveupload/
