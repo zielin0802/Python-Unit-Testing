@@ -24,6 +24,8 @@ class TestVolume(unittest.TestCase):
             volume(complex(1, 2))
         with self.assertRaises(TypeError):
             volume(4 - 2j)
+        with self.assertRaises(TypeError):
+            volume()
 
     def test_volume_valid_input(self):
         """Test for volume().  Valid inputs."""
