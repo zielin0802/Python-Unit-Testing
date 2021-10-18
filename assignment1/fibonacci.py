@@ -30,7 +30,7 @@ def fibonacci(n):
     ...
     TypeError: Fibonacci is defined only for type int.
 
-    :param n: position in the sequence in which to calculate.
+    :param n: int: position in the sequence in which to calculate.
     :return int: nth number in the sequence.
     :raises TypeError: if n is not an integer
     :raises ValueError: if n < 0
@@ -48,6 +48,7 @@ def fibonacci(n):
             fn1, fn2 = fn, fn1
         return fn
 
+
 def fibonacci_sequence(n):
     s = []
     if n == 0:
@@ -55,8 +56,9 @@ def fibonacci_sequence(n):
     else:
         s = [0, 1]
         for i in range(2, n + 1):
-            s.append(s[i-1] + s[i-2])
+            s.append(s[i - 1] + s[i - 2])
     return s
+
 
 if __name__ == '__main__':
     from doctest import testmod

@@ -8,7 +8,7 @@ python fibonacci_driver.py -n 20
 
 from argparse import ArgumentParser
 import sys
-from fibonacci import fibonacci, fibonacci_sequence
+from fibonacci import fibonacci_sequence
 
 
 def main():
@@ -16,7 +16,8 @@ def main():
     parser.add_argument('-n', '--n', type=int, required=False, default=10)
     args = parser.parse_args()
 
-    s = fibonacci_sequence(args.n - 1)
+    sequence = fibonacci_sequence(args.n - 1)
+    print(sequence)
 
     return 0
 
