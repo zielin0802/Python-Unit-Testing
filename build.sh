@@ -16,6 +16,9 @@ echo 'Running doctest...'
 python assignment1/fibonacci.py
 python assignment1/volume.py
 
+echo 'Running pytest'
+pytest assignment4/test_course.py -v
+
 echo 'Running flake8...'
 python_scripts=(
   'assignment1/fibonacci.py'
