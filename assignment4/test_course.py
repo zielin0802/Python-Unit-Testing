@@ -6,11 +6,13 @@ from Course import Course, date_to_string
 
 @pytest.fixture
 def course():
+    """Test fixture for Course object with default initialization parameters."""
     return Course()
 
 
 @pytest.fixture
 def course_with_init_data(course):
+    """Test fixture for Course object with supplied initialization parameters."""
     return Course(
         name='Python Unit Testing',
         instructor='Shivakumar Mathapathi',
@@ -23,10 +25,12 @@ def course_with_init_data(course):
 
 
 def test_date_to_string():
+    """Test for date_to_string().  Valid inputs."""
     assert date_to_string(date(1981, 8, 2)) == '08/02/1981'
 
 
 def test_course_init_defaults(course):
+    """Test for Course.__init__().  Default parameters."""
     assert course.name is None
     assert course.instructor is None
     assert course.in_progress is False
@@ -37,6 +41,7 @@ def test_course_init_defaults(course):
 
 
 def test_course_init_with_params(course_with_init_data):
+    """Test for Course.__init__().  Supplied parameters."""
     assert course_with_init_data.name == 'Python Unit Testing'
     assert course_with_init_data.instructor == 'Shivakumar Mathapathi'
     assert course_with_init_data.in_progress
@@ -47,12 +52,16 @@ def test_course_init_with_params(course_with_init_data):
 
 
 def test_init_course_in_progress_grade_na():
+    """Test for Course.__init__().
+    Test that in progress class defaults to grade N/A and grade points is null.
+    """
     c = Course(in_progress=True)
     assert c.grade == 'N/A'
     assert c.grade_points() is None
 
 
 def test_course_assignment(course):
+    """Test for Course member assignments."""
     course.name = 'Data Analytics Using Python'
     course.instructor = 'Shivakumar Mathapathi'
     course.in_progress = False
@@ -71,11 +80,13 @@ def test_course_assignment(course):
     [('A+', 4.0), ('A', 4.0), ('B-', 2.7), ('C', 2.0), ('F', 0.0), ('I', None)]
 )
 def test_grade_points(course, grade, points):
+    """Test for Course.grade_points().  Valid letter grades."""
     course.grade = grade
     assert course.grade_points() == points
 
 
 def test_grade_points_invalid_grade(course):
+    """Test for Course.grade_points(). Exceptional cases: invalid letter grade."""
     course.grade = 'C++'
     with pytest.raises(ValueError):
         course.grade_points()
@@ -86,9 +97,17 @@ def test_grade_points_invalid_grade(course):
 
 
 def test_season_no_start_date(course):
+    """Test for Course.season(). Confirm course with no start date has null season"""
     assert course.season() is None
 
 
-def test_season_with_start_date(course_with_init_data):
-    assert course_with_init_data.season() == 'Fall'
-    # TODO: add other 3 seasons
+def test_season_with_start_date(course):
+    """Test for Course.season().  Test valid seasons."""
+    course.start_date = date(year=2021, month=1, day=12)  # Python Programming Fundamentals
+    assert course.season() == 'Winter'
+    course.start_date = date(year=2021, month=4, day=6)  # Intermediate Python
+    assert course.season() == 'Spring'
+    course.start_date = date(year=2021, month=6, day=21)  # Data Analytics Using Python
+    assert course.season() == 'Summer'
+    course.start_date = date(year=2021, month=9, day=28)  # Python Unit Testing
+    assert course.season() == 'Fall'

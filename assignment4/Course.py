@@ -1,15 +1,34 @@
+"""Module for reprsenting an academic course."""
+
 from collections import OrderedDict
 
 
 def date_to_string(date, fmt='%m/%d/%Y'):
+    """Convert date object to string.format
+
+    :param date: (datetime.date, datetime.datetime)
+    :param fmt: str: format of return string
+    :return str:
+    """
     return date.strftime(format=fmt)
 
 
 class Course:
+    """Class defintion for Course."""
     def __init__(
         self, name=None, instructor=None, in_progress=False, units=3, grade=None,
         start_date=None, end_date=None
     ):
+        """Initialize Course object.
+
+        :param name: str: name of the course
+        :param instructor: str: instructor full name
+        :param in_progress: bool: Is the course in progress?
+        :param units: int
+        :param grade: (int, float)
+        :param start_date: (datetime.date, datetime.datetime)
+        :param end_date: (datetime.date, datetime.datetime)
+        """
         self.name = name
         self.instructor = instructor
         self.in_progress = in_progress
@@ -28,6 +47,11 @@ class Course:
             self.grade_points_map[grade_symbol] = None
 
     def grade_points(self):
+        """Return grade points from this course letter grade.
+
+        :returns float:
+        :raises ValueError: if self.grade is not a valid letter grade.
+        """
         if self.grade in self.grade_points_map:
             return self.grade_points_map.get(self.grade)
         else:
@@ -36,12 +60,14 @@ class Course:
             )
 
     def season(self):
+        """Return season in which the course occurs, based on start date.
+        """
         if self.start_date:
-            if self.start_date.month == 1:
+            if self.start_date.month in [12, 1, 2]:
                 return 'Winter'
-            elif self.start_date.month == 9:
-                return 'Fall'
-            elif self.start_date.month == 6:
-                return 'Summer'
-            elif self.start_date.month == 3:
+            elif self.start_date.month in [3, 4, 5]:
                 return 'Spring'
+            elif self.start_date.month in [6, 7, 8]:
+                return 'Summer'
+            elif self.start_date.month in [9, 10, 11]:
+                return 'Fall'

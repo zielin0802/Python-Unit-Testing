@@ -27,6 +27,8 @@ python_scripts=(
   'assignment1/test_volume.py'
   'assignment3/sensor_check.py'
   'assignment3/test_sensor_check.py'
+  'assignment4/Course.py'
+  'assignment4/test_course.py'
 )
 export num_scripts=${#python_scripts[@]}
 for ((i=0; i < num_scripts; i++)) do
