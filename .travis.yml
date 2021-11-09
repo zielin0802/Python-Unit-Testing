@@ -6,5 +6,4 @@ before install:
   - pip uninstall -r requirements.txt -y
 script:
   - pip install -r requirements.txt
-  - pytest
   - bash build.sh
