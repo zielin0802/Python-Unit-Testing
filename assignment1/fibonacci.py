@@ -35,7 +35,7 @@ def fibonacci(n):
     :raises TypeError: if n is not an integer
     :raises ValueError: if n < 0
     """
-    if not isinstance(n, int):
+    if not isinstance( n, int):
         raise TypeError('Fibonacci is defined only for type int.')
     elif n < 0:
         raise ValueError('Fibonacci is defined only for n >= 0.')
