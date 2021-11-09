@@ -26,7 +26,7 @@ def course_with_init_data(course):
 
 def test_date_to_string():
     """Test for date_to_string().  Valid inputs."""
-    assert date_to_string(date(1981, 8, 2)) == '008/02/1981'
+    assert date_to_string(date(1981, 8, 2)) == '08/02/1981'
 
 
 def test_course_init_defaults(course):
