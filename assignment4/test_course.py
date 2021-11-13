@@ -75,6 +75,24 @@ def test_course_assignment(course):
     assert course.grade == 'A+'
 
 
+def test_grade_points_map_key_order(course):
+    """Test key ordering of grade_points_map dict."""
+    grade_points_map_key_iter = iter(course.grade_points_map.keys())
+    assert next(grade_points_map_key_iter) == 'A+'
+    assert next(grade_points_map_key_iter) == 'A'
+    assert next(grade_points_map_key_iter) == 'A-'
+    assert next(grade_points_map_key_iter) == 'B+'
+    assert next(grade_points_map_key_iter) == 'B'
+    assert next(grade_points_map_key_iter) == 'B-'
+    assert next(grade_points_map_key_iter) == 'C+'
+    assert next(grade_points_map_key_iter) == 'C'
+    assert next(grade_points_map_key_iter) == 'C-'
+    assert next(grade_points_map_key_iter) == 'D'
+    assert next(grade_points_map_key_iter) == 'F'
+    assert next(grade_points_map_key_iter) == 'I'
+    assert next(grade_points_map_key_iter) == 'P'
+
+
 @pytest.mark.parametrize(
     'grade, points',
     [('A+', 4.0), ('A', 4.0), ('B-', 2.7), ('C', 2.0), ('F', 0.0), ('I', None)]

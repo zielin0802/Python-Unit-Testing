@@ -1,6 +1,6 @@
 """Module for reprsenting an academic course."""
 
-from collections import OrderedDict
+import sys
 
 
 def date_to_string(date, fmt='%m/%d/%Y'):
@@ -38,11 +38,16 @@ class Course:
             self.grade = 'N/A'
         self.start_date = start_date
         self.end_date = end_date
-
-        self.grade_points_map = OrderedDict({
+        self._grade_points_map = {
             'A+': 4.0, 'A': 4.0, 'A-': 3.7, 'B+': 3.3, 'B': 3.0, 'B-': 2.7,
             'C+': 2.3, 'C': 2.0, 'C-': 1.7, 'D': 1.0, 'F': 0.0
-        })
+        }
+        if sys.version_info.major >= 3 and sys.version_info.minor >= 7:
+            self.grade_points_map = self._grade_points_map
+        else:
+            from collections import OrderedDict
+            self.grade_points_map = OrderedDict(self._grade_points_map)
+
         for grade_symbol in ['I', 'P', 'NP', 'NR', 'NFC', 'Blank', 'N/A']:
             self.grade_points_map[grade_symbol] = None
 
