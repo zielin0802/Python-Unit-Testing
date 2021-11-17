@@ -11,7 +11,7 @@ def course():
 
 
 @pytest.fixture
-def course_with_init_data(course):
+def course_with_init_data():
     """Test fixture for Course object with supplied initialization parameters."""
     return Course(
         name='Python Unit Testing',
