@@ -1,3 +1,5 @@
+import datetime
+
 import pytest
 
 from Course import Course
@@ -30,6 +32,19 @@ def test_course_load_iter(course_load):
 
     with pytest.raises(StopIteration):
         next(course_load_iter)
+
+
+def test_load_courses_from_dataframe(course_load, course_load_dataframe):
+    course_load.load_courses_from_dataframe(course_load_dataframe)
+    course1 = course_load.courses[152524]
+    assert course1.section_id == 152524
+    assert course1.course_id == 'CSE-41273'
+    assert course1.instructor == 'Diane Chen'
+    assert course1.name == 'Python Programming Fundamentals'
+    assert course1.units == 3
+    assert course1.grade == 'A+'
+    assert course1.start_date == datetime.date(year=2021, month=1, day=12)
+    assert course1.end_date == datetime.date(year=2021, month=3, day=9)
 
 
 def test_gpa_valid_grades(course_load):

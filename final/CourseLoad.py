@@ -1,9 +1,25 @@
+from Course import Course
+
+
 class CourseLoad:
     def __init__(self):
         self.courses = dict()
 
     def __iter__(self):
         yield from self.courses.items()
+
+    def load_courses_from_dataframe(self, data):
+        for row in data.itertuples():
+            self.courses[row.section_id] = Course(
+                section_id=row.section_id,
+                course_id=row.course_id,
+                name=row.name,
+                instructor=row.instructor,
+                units=row.units,
+                grade=row.grade,
+                start_date=row.start_date,
+                end_date=row.end_date
+            )
 
     def gpa(self):
         try:
