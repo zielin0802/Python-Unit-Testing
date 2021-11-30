@@ -16,8 +16,8 @@ def date_to_string(date, fmt='%m/%d/%Y'):
 class Course:
     """Class defintion for Course."""
     def __init__(
-        self, name=None, instructor=None, in_progress=False, units=3, grade=None,
-        start_date=None, end_date=None
+        self, section_id=None, course_id=None, name=None, instructor=None, in_progress=False,
+        units=3, grade=None, start_date=None, end_date=None
     ):
         """Initialize Course object.
 
@@ -29,6 +29,8 @@ class Course:
         :param start_date: (datetime.date, datetime.datetime)
         :param end_date: (datetime.date, datetime.datetime)
         """
+        self.section_id = section_id
+        self.course_id = course_id
         self.name = name
         self.instructor = instructor
         self.in_progress = in_progress

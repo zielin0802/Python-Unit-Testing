@@ -17,7 +17,7 @@ python assignment1/fibonacci.py
 python assignment1/volume.py
 
 echo 'Running pytest'
-pytest assignment4/test_course.py -v
+pytest final/test_course.py -v
 
 echo 'Running flake8...'
 python_scripts=(
@@ -27,8 +27,8 @@ python_scripts=(
   'assignment1/test_volume.py'
   'assignment3/sensor_check.py'
   'assignment3/test_sensor_check.py'
-  'assignment4/Course.py'
-  'assignment4/test_course.py'
+  'final/Course.py'
+  'final/test_course.py'
 )
 export num_scripts=${#python_scripts[@]}
 for ((i=0; i < num_scripts; i++)) do
