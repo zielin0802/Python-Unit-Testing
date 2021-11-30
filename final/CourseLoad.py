@@ -1,12 +1,18 @@
 from Course import Course
 
+import pandas as pd
+
 
 class CourseLoad:
     def __init__(self):
         self.courses = dict()
+        self.raw_course_data = None
 
     def __iter__(self):
         yield from self.courses.items()
+
+    def load_raw_courseload_data(self, input_file_name):
+        self.raw_course_data = pd.read_csv(input_file_name)
 
     def load_courses_from_dataframe(self, data):
         for row in data.itertuples():
@@ -34,3 +40,11 @@ class CourseLoad:
         if graded_courses_count > 0:
             grade_points = [course.grade_points() for course in graded_courses]
             return sum(grade_points) / graded_courses_count
+
+    def basic_info(self):
+        attributes = [
+            f'Total Courses: {len(self.courses)}',
+            f'GPA: {self.gpa()}'
+        ]
+
+        return '\n'.join(attributes)
