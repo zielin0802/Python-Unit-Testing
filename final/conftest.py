@@ -1,5 +1,3 @@
-import datetime
-
 import pandas as pd
 import pytest
 
@@ -14,7 +12,8 @@ def course_load_dataframe():
             'name': 'Python Programming Fundamentals',
             'units': 3,
             'grade': 'A+',
-            'start_date': datetime.date(year=2021, month=1, day=12),
-            'end_date': datetime.date(year=2021, month=3, day=9)
+            'start_date': '1/12/21',
+            'end_date': '3/9/21',
+            'fee': 695
         }
     ])
