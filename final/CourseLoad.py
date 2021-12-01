@@ -15,13 +15,13 @@ class CourseLoad:
     def __init__(self):
         self.courses = dict()
         self.raw_course_data = None
-        self.date_format = '%m/%d/%Y'
+        self.date_format = '%m/%d/%y'
 
     def __iter__(self):
         yield from self.courses.items()
 
     def load_raw_courseload_data(self, input_file_name):
-        self.raw_course_data = pd.read_csv(input_file_name, dtype={'grade': str})
+        self.raw_course_data = pd.read_csv(input_file_name)
 
     def load_courses_from_dataframe(self, data):
         for row in data.itertuples():
@@ -42,7 +42,7 @@ class CourseLoad:
             graded_courses = [
                 course
                 for _, course in self
-                if not pd.isnull(course.grade) and course.grade_points() is not None
+                if course.grade_points() is not None
             ]
         except ValueError as ve:
             raise ValueError(f'Can only calculate GPA with valid grades.\n{ve}')

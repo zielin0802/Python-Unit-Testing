@@ -2,6 +2,8 @@
 
 import sys
 
+import numpy as np
+
 
 def date_to_string(date, fmt='%m/%d/%Y'):
     """Convert date object to string.format
@@ -51,7 +53,7 @@ class Course:
             from collections import OrderedDict
             self.grade_points_map = OrderedDict(self._grade_points_map)
 
-        for grade_symbol in ['I', 'P', 'NP', 'NR', 'NFC', 'Blank', 'N/A']:
+        for grade_symbol in ['I', 'P', 'NP', 'NR', 'NFC', 'Blank', 'N/A', np.nan]:
             self.grade_points_map[grade_symbol] = None
 
     def grade_points(self):
